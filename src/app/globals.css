@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #CCFF00;
+  --color-secondary: #FF6321;
+  --color-background: #0A0A0A;
+  --color-surface: #111111;
+  --color-card: #1A1A1A;
+  --color-light: #E4E3E0;
+  --color-muted: #8A8A88;
+  --color-border: #242424;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --animate-fade-up: fade-up 0.6s ease-out;
+  --animate-scale-in: scale-in 0.3s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0A0A0A;
+  color: #E4E3E0;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(204, 255, 0, 0.3);
+  color: #0A0A0A;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #CCFF00, #FF6321);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glow-lime {
+  box-shadow: 0 0 30px rgba(204, 255, 0, 0.06), 0 0 60px rgba(204, 255, 0, 0.03);
+}
+
+.glow-orange {
+  box-shadow: 0 0 30px rgba(255, 99, 33, 0.06), 0 0 60px rgba(255, 99, 33, 0.03);
+}
+
+.glow-lime-strong {
+  box-shadow: 0 0 40px rgba(204, 255, 0, 0.12), 0 0 80px rgba(204, 255, 0, 0.05);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}

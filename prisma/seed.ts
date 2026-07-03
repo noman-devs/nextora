@@ -1,14 +1,7 @@
 import { PrismaClient } from "../src/generated/prisma/client"
-import { PrismaMariaDb } from "@prisma/adapter-mariadb"
 import { hash } from "bcryptjs"
 
-const url = process.env.DATABASE_URL
-if (!url) {
-  console.error("DATABASE_URL environment variable is not set")
-  process.exit(1)
-}
-const adapter = new PrismaMariaDb(url)
-const prisma = new PrismaClient({ adapter })
+const prisma = new PrismaClient()
 
 async function main() {
   const email = process.env.ADMIN_EMAIL || "admin@nextora.com"

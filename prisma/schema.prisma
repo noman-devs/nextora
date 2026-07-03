@@ -1,24 +1,27 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   email     String   @unique
   name      String?
   password  String
   role      String   @default("admin")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("users")
 }
 
 model Lead {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   name      String
   email     String
   phone     String?
@@ -28,10 +31,12 @@ model Lead {
   status    String   @default("new")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("leads")
 }
 
 model BlogPost {
-  id            String    @id @default(cuid())
+  id            String    @id @default(cuid()) @map("_id")
   title         String
   slug          String    @unique
   excerpt       String?
@@ -44,10 +49,12 @@ model BlogPost {
   publishedAt   DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+
+  @@map("blog_posts")
 }
 
 model PortfolioProject {
-  id            String   @id @default(cuid())
+  id            String   @id @default(cuid()) @map("_id")
   title         String
   slug          String   @unique
   description   String?
@@ -60,10 +67,12 @@ model PortfolioProject {
   tags          String   @default("[]")
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  @@map("portfolio_projects")
 }
 
 model Testimonial {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   name      String
   company   String?
   role      String?
@@ -72,10 +81,12 @@ model Testimonial {
   rating    Int      @default(5)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("testimonials")
 }
 
 model ServiceItem {
-  id          String   @id @default(cuid())
+  id          String   @id @default(cuid()) @map("_id")
   title       String
   description String?
   icon        String   @default("Globe")
@@ -83,24 +94,32 @@ model ServiceItem {
   order       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  @@map("services")
 }
 
 model Subscriber {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   email     String   @unique
   createdAt DateTime @default(now())
+
+  @@map("subscribers")
 }
 
 model Media {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @map("_id")
   filename  String
   url       String
   type      String   @default("image")
   size      Int      @default(0)
   createdAt DateTime @default(now())
+
+  @@map("media")
 }
 
 model Setting {
-  id   String @id @default("global")
+  id   String @id @default("global") @map("_id")
   data String @default("{}")
+
+  @@map("settings")
 }

@@ -29,10 +29,13 @@ function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const { data: session, status } = useSession()
   const router = useRouter()
+  const isLoginPage = pathname === "/admin/login"
 
   useEffect(() => {
-    if (status === "unauthenticated") router.push("/admin/login")
-  }, [status, router])
+    if (status === "unauthenticated" && !isLoginPage) router.push("/admin/login")
+  }, [status, router, isLoginPage])
+
+  if (isLoginPage) return <>{children}</>
 
   if (status === "loading") {
     return (

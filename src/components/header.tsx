@@ -35,19 +35,22 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "glass shadow-lg shadow-black/20"
+          ? "bg-white/90 backdrop-blur-xl shadow-sm shadow-black/[0.02] border-b border-border/50"
           : "bg-transparent"
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-18 items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="h-9 w-9 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 group-hover:shadow-primary/30 transition-shadow">
-              <span className="text-sm font-bold text-background">N</span>
+            <div className="h-9 w-9 rounded-xl bg-primary flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+              <span className="text-sm font-bold text-white">N</span>
             </div>
-            <span className="text-lg font-semibold tracking-tight text-light">
+            <span className={cn(
+              "text-lg font-semibold tracking-tight transition-colors duration-300",
+              scrolled ? "text-light" : "text-light"
+            )}>
               Nextora
             </span>
           </Link>
@@ -61,14 +64,14 @@ export function Header() {
                   "relative px-4 py-2 text-sm font-medium rounded-lg transition-colors",
                   pathname === link.href
                     ? "text-primary"
-                    : "text-muted hover:text-light hover:bg-white/5"
+                    : "text-muted hover:text-light hover:bg-black/[0.03]"
                 )}
               >
                 {link.label}
                 {pathname === link.href && (
                   <motion.div
                     layoutId="nav-indicator"
-                    className="absolute inset-0 bg-primary/10 rounded-lg -z-10"
+                    className="absolute inset-0 bg-primary/5 rounded-lg -z-10"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -102,7 +105,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden border-t border-border glass"
+            className="md:hidden border-t border-border/50 bg-white"
           >
             <div className="px-4 py-6 space-y-1">
               {navLinks.map((link) => (
@@ -112,8 +115,8 @@ export function Header() {
                   className={cn(
                     "block px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                     pathname === link.href
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted hover:text-light hover:bg-white/5"
+                      ? "bg-primary/5 text-primary"
+                      : "text-muted hover:text-light hover:bg-black/[0.03]"
                   )}
                 >
                   {link.label}

@@ -17,20 +17,20 @@ export function LeadGenCTA() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} className="relative py-24 sm:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/[0.03] to-background" />
+    <section ref={ref} className="relative py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.02] to-background" />
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/[0.02] blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
-          className="relative rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/[0.04] via-card to-secondary/[0.04] p-8 sm:p-12 lg:p-16 text-center overflow-hidden glow-lime"
+          className="relative rounded-[28px] border border-border bg-white p-10 sm:p-14 lg:p-18 text-center overflow-hidden shadow-sm"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/[0.03] rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/[0.03] rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
           <div className="relative z-10">
             <motion.div
@@ -45,7 +45,7 @@ export function LeadGenCTA() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]"
             >
               Ready to Grow Your{" "}
               <span className="gradient-text">Digital Presence?</span>
@@ -55,7 +55,7 @@ export function LeadGenCTA() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-4 text-lg text-muted max-w-2xl mx-auto"
+              className="mt-6 text-lg text-muted max-w-2xl mx-auto leading-relaxed"
             >
               Book a free strategy session and discover exactly what your business needs to
               scale online. No pressure, no pitch — just actionable insights.
@@ -82,7 +82,7 @@ export function LeadGenCTA() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <Link href="/contact">
                 <Button variant="primary" size="xl">
@@ -91,7 +91,7 @@ export function LeadGenCTA() {
                 </Button>
               </Link>
               <Link href="/services">
-                <Button variant="outline" size="xl">
+                <Button variant="secondary" size="xl">
                   Explore Services
                 </Button>
               </Link>

@@ -28,13 +28,13 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border bg-background">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+    <footer className="relative border-t border-border bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-16">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div className="h-9 w-9 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
-                <span className="text-sm font-bold text-background">N</span>
+            <Link href="/" className="flex items-center gap-2.5 mb-5">
+              <div className="h-9 w-9 rounded-xl bg-primary flex items-center justify-center shadow-sm">
+                <span className="text-sm font-bold text-white">N</span>
               </div>
               <span className="text-lg font-semibold tracking-tight text-light">
                 Nextora
@@ -44,11 +44,11 @@ export function Footer() {
               Your complete digital growth partner. We build, optimize, and scale digital
               experiences that drive real business results.
             </p>
-            <div className="mt-6 flex gap-3">
+            <div className="mt-8 flex gap-3">
               {["LI", "X", "IG", "FB"].map((s) => (
                 <span
                   key={s}
-                  className="h-8 w-8 rounded-lg bg-card border border-border flex items-center justify-center text-xs text-muted hover:text-primary hover:border-primary/30 hover:bg-primary/10 transition-all cursor-pointer"
+                  className="h-9 w-9 rounded-xl bg-black/[0.03] border border-border flex items-center justify-center text-xs text-muted hover:text-primary hover:border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
                 >
                   {s}
                 </span>
@@ -58,7 +58,7 @@ export function Footer() {
 
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-sm font-semibold text-light mb-4">
+              <h3 className="text-sm font-semibold text-light mb-5">
                 {title}
               </h3>
               <ul className="space-y-3">
@@ -80,7 +80,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-20 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted">
             &copy; {new Date().getFullYear()} Nextora. All rights reserved.
           </p>

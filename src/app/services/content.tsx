@@ -23,8 +23,6 @@ const servicesDetail = [
       "Security hardening",
       "Multisite architecture",
     ],
-    accent: "from-primary/20 to-primary/5",
-    iconColor: "text-primary",
   },
   {
     icon: ShoppingCart,
@@ -38,8 +36,6 @@ const servicesDetail = [
       "Mobile-optimized checkout",
       "Multi-currency support",
     ],
-    accent: "from-secondary/20 to-secondary/5",
-    iconColor: "text-secondary",
   },
   {
     icon: Code2,
@@ -53,8 +49,6 @@ const servicesDetail = [
       "Database design & optimization",
       "Cloud deployment & scaling",
     ],
-    accent: "from-primary/20 to-primary/5",
-    iconColor: "text-primary",
   },
   {
     icon: Search,
@@ -68,8 +62,6 @@ const servicesDetail = [
       "Technical SEO audits",
       "Ranking tracking & reporting",
     ],
-    accent: "from-secondary/20 to-secondary/5",
-    iconColor: "text-secondary",
   },
   {
     icon: MapPin,
@@ -83,8 +75,6 @@ const servicesDetail = [
       "Map pack ranking",
       "Geo-targeted campaigns",
     ],
-    accent: "from-primary/20 to-primary/5",
-    iconColor: "text-primary",
   },
   {
     icon: BarChart3,
@@ -98,8 +88,6 @@ const servicesDetail = [
       "Canonicalization & redirects",
       "Page speed optimization",
     ],
-    accent: "from-secondary/20 to-secondary/5",
-    iconColor: "text-secondary",
   },
   {
     icon: Users,
@@ -113,8 +101,6 @@ const servicesDetail = [
       "Conversion rate optimization",
       "A/B testing & experimentation",
     ],
-    accent: "from-primary/20 to-primary/5",
-    iconColor: "text-primary",
   },
   {
     icon: ShieldCheck,
@@ -128,8 +114,6 @@ const servicesDetail = [
       "Sales funnel design",
       "Conversion tracking & analytics",
     ],
-    accent: "from-secondary/20 to-secondary/5",
-    iconColor: "text-secondary",
   },
   {
     icon: Server,
@@ -143,8 +127,6 @@ const servicesDetail = [
       "Automated daily backups",
       "24/7 technical support",
     ],
-    accent: "from-primary/20 to-primary/5",
-    iconColor: "text-primary",
   },
 ]
 
@@ -154,17 +136,17 @@ export function ServicesPageContent() {
 
   return (
     <div className="pt-24">
-      <section className="relative py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
+      <section className="relative py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-background" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-20"
           >
-            <Badge variant="primary" className="mb-4">Our Services</Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <Badge variant="primary" className="mb-5">Our Services</Badge>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.04]">
               Everything You Need to{" "}
               <span className="gradient-text">Grow Online</span>
             </h1>
@@ -176,9 +158,9 @@ export function ServicesPageContent() {
         </div>
       </section>
 
-      <section ref={ref} className="relative py-24 overflow-hidden">
+      <section ref={ref} className="relative py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="space-y-16">
+          <div className="space-y-20">
             {servicesDetail.map((service, index) => {
               const Icon = service.icon
               const isEven = index % 2 === 0
@@ -189,12 +171,12 @@ export function ServicesPageContent() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                 >
-                  <div className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center`}>
+                  <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center`}>
                     <div className={isEven ? "" : "lg:order-2"}>
-                      <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${service.accent} border border-white/5 flex items-center justify-center mb-6`}>
-                        <Icon className={`h-7 w-7 ${service.iconColor}`} />
+                      <div className="h-14 w-14 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center mb-6">
+                        <Icon className="h-7 w-7 text-primary" />
                       </div>
-                      <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
+                      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight leading-[1.08] mb-4">
                         {service.title}
                       </h2>
                       <p className="text-muted leading-relaxed mb-8">
@@ -210,8 +192,8 @@ export function ServicesPageContent() {
                       </div>
                     </div>
                     <div className={isEven ? "" : "lg:order-1"}>
-                      <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-white/5 flex items-center justify-center">
-                        <Icon className="h-24 w-24 text-primary/20" />
+                      <div className="aspect-[4/3] rounded-[28px] bg-primary/[0.02] border border-border flex items-center justify-center">
+                        <Icon className="h-24 w-24 text-primary/10" />
                       </div>
                     </div>
                   </div>

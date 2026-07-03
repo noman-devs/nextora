@@ -64,24 +64,24 @@ export function Testimonials() {
   }
 
   return (
-    <section ref={ref} className="relative py-24 sm:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background" />
+    <section ref={ref} className="relative py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.015] to-background" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <Badge variant="secondary" className="mb-4">
+          <Badge variant="primary" className="mb-5">
             Testimonials
           </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]">
             What Our{" "}
             <span className="gradient-text">Clients Say</span>
           </h2>
-          <p className="mt-4 text-lg text-muted">
+          <p className="mt-6 text-lg text-muted leading-relaxed">
             Real feedback from real partnerships.
           </p>
         </motion.div>
@@ -100,12 +100,12 @@ export function Testimonials() {
                 className="absolute inset-0 flex items-center justify-center"
               >
                 <div className="text-center px-4 max-w-3xl mx-auto">
-                  <Quote className="h-8 w-8 text-primary/30 mx-auto mb-6" />
-                  <blockquote className="text-lg sm:text-xl lg:text-2xl text-light leading-relaxed">
+                  <Quote className="h-10 w-10 text-primary/10 mx-auto mb-8" />
+                  <blockquote className="text-xl sm:text-2xl lg:text-3xl text-light leading-relaxed font-medium">
                     &ldquo;{testimonials[current].quote}&rdquo;
                   </blockquote>
-                  <div className="mt-8 flex items-center justify-center gap-4">
-                    <div className="h-10 w-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-sm font-bold text-primary">
+                  <div className="mt-10 flex items-center justify-center gap-4">
+                    <div className="h-11 w-11 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-sm font-bold text-primary">
                       {testimonials[current].initials}
                     </div>
                     <div className="text-left">
@@ -122,10 +122,10 @@ export function Testimonials() {
             </AnimatePresence>
           </div>
 
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-4 mt-10">
             <button
               onClick={prev}
-              className="h-10 w-10 rounded-full border border-white/10 bg-card flex items-center justify-center text-muted hover:text-light hover:bg-white/10 transition-colors"
+              className="h-10 w-10 rounded-full border border-border bg-white flex items-center justify-center text-muted hover:text-light hover:bg-black/5 transition-colors"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -142,7 +142,7 @@ export function Testimonials() {
                   className={cn(
                     "h-2 rounded-full transition-all duration-300",
                     index === current
-                      ? "w-8 bg-gradient-to-r from-primary to-secondary"
+                      ? "w-8 bg-primary"
                       : "w-2 bg-border hover:bg-muted"
                   )}
                   aria-label={`Go to testimonial ${index + 1}`}
@@ -152,7 +152,7 @@ export function Testimonials() {
 
             <button
               onClick={next}
-              className="h-10 w-10 rounded-full border border-white/10 bg-card flex items-center justify-center text-muted hover:text-light hover:bg-white/10 transition-colors"
+              className="h-10 w-10 rounded-full border border-border bg-white flex items-center justify-center text-muted hover:text-light hover:bg-black/5 transition-colors"
               aria-label="Next testimonial"
             >
               <ChevronRight className="h-5 w-5" />

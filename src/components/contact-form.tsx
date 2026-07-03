@@ -62,7 +62,7 @@ export function ContactForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-16"
       >
-        <div className="h-16 w-16 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center mx-auto mb-6">
+        <div className="h-16 w-16 rounded-2xl bg-primary/5 border border-primary/20 flex items-center justify-center mx-auto mb-6">
           <Check className="h-8 w-8 text-primary" />
         </div>
         <h3 className="text-2xl font-bold text-light mb-2">
@@ -77,8 +77,8 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid sm:grid-cols-2 gap-5">
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid sm:grid-cols-2 gap-6">
         <FormField
           label="Full Name"
           name="name"
@@ -99,7 +99,7 @@ export function ContactForm() {
         />
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-5">
+      <div className="grid sm:grid-cols-2 gap-6">
         <FormField
           label="Company Name"
           name="company"
@@ -126,13 +126,13 @@ export function ContactForm() {
           name="service"
           value={formData.service}
           onChange={handleChange}
-          className="w-full h-11 px-4 rounded-xl bg-card border border-border text-light placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all appearance-none"
+          className="w-full h-11 px-4 rounded-xl bg-white border border-border text-light placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all appearance-none"
         >
-          <option value="" disabled className="bg-card">
+          <option value="" disabled className="bg-white">
             Select a service
           </option>
           {serviceOptions.map((opt) => (
-            <option key={opt} value={opt} className="bg-card">
+            <option key={opt} value={opt} className="bg-white">
               {opt}
             </option>
           ))}
@@ -150,7 +150,7 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 rounded-xl bg-card border border-border text-light placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-white border border-border text-light placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all resize-none"
         />
       </div>
 
@@ -202,7 +202,7 @@ function FormField({
     <div>
       <label className="block text-sm font-medium text-light mb-2">
         {label}
-        {required && <span className="text-secondary ml-1">*</span>}
+        {required && <span className="text-primary ml-1">*</span>}
       </label>
       <input
         type={type}
@@ -211,7 +211,7 @@ function FormField({
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full h-11 px-4 rounded-xl bg-card border border-border text-light placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
+        className="w-full h-11 px-4 rounded-xl bg-white border border-border text-light placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all"
       />
     </div>
   )

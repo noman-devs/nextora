@@ -54,8 +54,8 @@ export function AboutContent() {
 
   return (
     <div className="pt-24">
-      <section className="relative py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
+      <section className="relative py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-background" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -63,8 +63,8 @@ export function AboutContent() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <Badge variant="primary" className="mb-4">About Nextora</Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <Badge variant="primary" className="mb-5">About Nextora</Badge>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.04]">
               Your Partner in{" "}
               <span className="gradient-text">Digital Growth</span>
             </h1>
@@ -77,16 +77,16 @@ export function AboutContent() {
         </div>
       </section>
 
-      <section ref={ref} className="relative py-24 overflow-hidden">
+      <section ref={ref} className="relative py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5 }}
             >
-              <Badge variant="secondary" className="mb-4">Our Story</Badge>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
+              <Badge variant="primary" className="mb-5">Our Story</Badge>
+              <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08] mb-8">
                 From Passion to{" "}
                 <span className="gradient-text">Partnership</span>
               </h2>
@@ -94,12 +94,12 @@ export function AboutContent() {
                 What started as a small WordPress consultancy has evolved into a comprehensive
                 digital growth agency spanning development, SEO, marketing, and strategy.
               </p>
-              <p className="text-muted leading-relaxed mb-6">
+              <p className="text-muted leading-relaxed mb-8">
                 Today, we&apos;re a team of 40+ strategists, developers, designers, and marketers
                 working across three continents — united by a shared commitment to delivering
                 measurable results.
               </p>
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-10">
                 <div>
                   <div className="text-3xl font-bold text-primary">12+</div>
                   <div className="text-xs text-muted mt-1">Years in Business</div>
@@ -119,7 +119,7 @@ export function AboutContent() {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-white/5 flex items-center justify-center">
+              <div className="aspect-[4/3] rounded-[28px] bg-primary/[0.02] border border-border flex items-center justify-center">
                 <div className="text-center p-8">
                   <div className="text-5xl font-bold gradient-text">200+</div>
                   <div className="text-sm text-muted mt-2">Clients Served</div>
@@ -130,21 +130,21 @@ export function AboutContent() {
         </div>
       </section>
 
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-20"
           >
-            <Badge variant="primary" className="mb-4">Our Values</Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+            <Badge variant="primary" className="mb-5">Our Values</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08]">
               What Drives{" "}
               <span className="gradient-text">Us</span>
             </h2>
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value, index) => {
               const Icon = value.icon
               return (
@@ -155,8 +155,8 @@ export function AboutContent() {
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                 >
                   <Card className="h-full">
-                    <CardContent className="p-6 sm:p-8">
-                      <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
+                    <CardContent className="p-8">
+                      <div className="h-11 w-11 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center mb-5">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
                       <h3 className="text-lg font-semibold text-light mb-2">{value.title}</h3>
@@ -170,16 +170,16 @@ export function AboutContent() {
         </div>
       </section>
 
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-32 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-20"
           >
-            <Badge variant="secondary" className="mb-4">Leadership</Badge>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+            <Badge variant="primary" className="mb-5">Leadership</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.08]">
               Meet the{" "}
               <span className="gradient-text">Team</span>
             </h2>
@@ -193,8 +193,8 @@ export function AboutContent() {
                 transition={{ duration: 0.5, delay: index * 0.08 }}
               >
                 <Card className="text-center h-full">
-                  <CardContent className="p-6 sm:p-8">
-                    <div className="h-16 w-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-lg font-bold text-background mx-auto mb-4">
+                  <CardContent className="p-8">
+                    <div className="h-16 w-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-lg font-bold text-primary mx-auto mb-5">
                       {member.initials}
                     </div>
                     <h3 className="text-lg font-semibold text-light">{member.name}</h3>

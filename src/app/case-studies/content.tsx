@@ -18,7 +18,6 @@ const caseStudies = [
     ],
     description:
       "A complete WooCommerce overhaul combined with a targeted SEO strategy transformed this retail brand's online presence, doubling revenue within four months.",
-    gradient: "from-primary/20 to-secondary/20",
   },
   {
     title: "Local SEO Drives 450% Lead Increase",
@@ -31,7 +30,6 @@ const caseStudies = [
     ],
     description:
       "A comprehensive local SEO campaign including GBP optimization, citation building, and local content strategy drove a service business from obscurity to market dominance.",
-    gradient: "from-secondary/20 to-primary/20",
   },
   {
     title: "Enterprise WordPress Scales to 500+ Pages",
@@ -44,7 +42,6 @@ const caseStudies = [
     ],
     description:
       "An enterprise-grade WordPress multisite solution with custom workflows, advanced governance, and optimized performance for a national organization.",
-    gradient: "from-primary/20 to-secondary/20",
   },
   {
     title: "B2B Lead Generation Engine",
@@ -57,7 +54,6 @@ const caseStudies = [
     ],
     description:
       "A fully integrated lead generation system combining optimized landing pages, marketing automation, and CRM integration that transformed this B2B company's sales pipeline.",
-    gradient: "from-secondary/20 to-primary/20",
   } as const,
 ]
 
@@ -67,17 +63,17 @@ export function CaseStudiesContent() {
 
   return (
     <div className="pt-24">
-      <section className="relative py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
+      <section className="relative py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-background" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-20"
           >
-            <Badge variant="secondary" className="mb-4">Case Studies</Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <Badge variant="primary" className="mb-5">Case Studies</Badge>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.04]">
               Real Results,{" "}
               <span className="gradient-text">Real Growth</span>
             </h1>
@@ -98,9 +94,9 @@ export function CaseStudiesContent() {
                 >
                   <Card hover className="overflow-hidden group">
                     <div className="grid lg:grid-cols-5">
-                      <div className="lg:col-span-3 p-6 sm:p-8 lg:p-10">
+                      <div className="lg:col-span-3 p-8 sm:p-10 lg:p-12">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className={`h-10 w-10 rounded-xl bg-gradient-to-br ${study.gradient} border border-white/5 flex items-center justify-center`}>
+                          <div className="h-10 w-10 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center">
                             <Icon className="h-5 w-5 text-primary" />
                           </div>
                           <Badge variant="ghost">{study.category}</Badge>
@@ -111,16 +107,16 @@ export function CaseStudiesContent() {
                         <p className="text-muted leading-relaxed mb-6">
                           {study.description}
                         </p>
-                        <div className="flex items-center gap-2 text-sm text-primary group-hover:text-primary/80 transition-colors font-medium">
+                        <div className="flex items-center gap-2 text-sm text-primary group-hover:text-[#E5531A] transition-colors font-medium">
                           Read full case study
                           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>
                       </div>
-                      <div className="lg:col-span-2 bg-white/[0.02] border-t lg:border-t-0 lg:border-l border-border p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
+                      <div className="lg:col-span-2 bg-black/[0.02] border-t lg:border-t-0 lg:border-l border-border p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
                         <div className="text-xs text-muted mb-6 uppercase tracking-wider font-medium">
                           Key Results
                         </div>
-                        <div className="space-y-5">
+                        <div className="space-y-6">
                           {study.results.map((result) => (
                             <div key={result.label}>
                               <div className="text-2xl sm:text-3xl font-bold gradient-text">

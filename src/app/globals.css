@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #CCFF00;
+  --color-primary: #FF6321;
   --color-secondary: #FF6321;
-  --color-background: #0A0A0A;
-  --color-surface: #111111;
-  --color-card: #1A1A1A;
-  --color-light: #E4E3E0;
-  --color-muted: #8A8A88;
-  --color-border: #242424;
+  --color-background: #F7F5F2;
+  --color-surface: #FFFFFF;
+  --color-card: #FFFFFF;
+  --color-light: #111111;
+  --color-muted: #8B8B8B;
+  --color-border: #E6E1DA;
+  --color-divider: #DDD6CC;
+  --color-success: #2E8B57;
+  --color-warning: #F4A300;
+  --color-error: #D14343;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --animate-fade-up: fade-up 0.6s ease-out;
@@ -36,45 +40,34 @@ html {
 }
 
 body {
-  background: #0A0A0A;
-  color: #E4E3E0;
+  background: #F7F5F2;
+  color: #111111;
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
 ::selection {
-  background: rgba(204, 255, 0, 0.3);
-  color: #0A0A0A;
+  background: rgba(255, 99, 33, 0.2);
+  color: #111111;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #CCFF00, #FF6321);
+  background: linear-gradient(135deg, #FF6321, #FF6321);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .glass {
-  background: rgba(26, 26, 26, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.glow-lime {
-  box-shadow: 0 0 30px rgba(204, 255, 0, 0.06), 0 0 60px rgba(204, 255, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .glow-orange {
   box-shadow: 0 0 30px rgba(255, 99, 33, 0.06), 0 0 60px rgba(255, 99, 33, 0.03);
 }
 
-.glow-lime-strong {
-  box-shadow: 0 0 40px rgba(204, 255, 0, 0.12), 0 0 80px rgba(204, 255, 0, 0.05);
-}
-
-.grid-pattern {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
+.glow-orange-strong {
+  box-shadow: 0 0 40px rgba(255, 99, 33, 0.12), 0 0 80px rgba(255, 99, 33, 0.05);
 }

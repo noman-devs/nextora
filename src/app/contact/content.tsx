@@ -18,7 +18,7 @@ const contactInfo = [
     icon: Phone,
     label: "Call Us",
     value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    href: "+15551234567",
   },
   {
     icon: MapPin,
@@ -38,17 +38,17 @@ export function ContactContent() {
 
   return (
     <div className="pt-24">
-      <section className="relative py-24 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
+      <section className="relative py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] via-transparent to-background" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-20"
           >
-            <Badge variant="primary" className="mb-4">Get in Touch</Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <Badge variant="primary" className="mb-5">Get in Touch</Badge>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.04]">
               Let&apos;s Start Your{" "}
               <span className="gradient-text">Growth Story</span>
             </h1>
@@ -66,8 +66,8 @@ export function ContactContent() {
               className="lg:col-span-3"
             >
               <Card>
-                <CardContent className="p-6 sm:p-8">
-                  <h2 className="text-xl font-semibold text-light mb-6">
+                <CardContent className="p-8 sm:p-10">
+                  <h2 className="text-xl font-semibold text-light mb-8">
                     Send Us a Message
                   </h2>
                   <ContactForm />
@@ -85,8 +85,8 @@ export function ContactContent() {
                 const Icon = info.icon
                 return (
                   <Card key={info.label}>
-                    <CardContent className="p-5 flex items-start gap-4">
-                      <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                    <CardContent className="p-6 flex items-start gap-4">
+                      <div className="h-10 w-10 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center shrink-0">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
                       <div>
@@ -117,7 +117,7 @@ export function ContactContent() {
                   </p>
                   <a
                     href="#"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-[#E5531A] transition-colors"
                   >
                     Book a strategy session
                     <ArrowRight className="h-3.5 w-3.5" />

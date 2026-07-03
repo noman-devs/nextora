@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import { format } from "date-fns"
 import { Image, Plus, Trash2, Loader2, ExternalLink, FileType } from "lucide-react"
 
@@ -15,7 +14,6 @@ interface MediaItem {
 }
 
 export default function MediaPage() {
-  const router = useRouter()
   const [mediaItems, setMediaItems] = useState<MediaItem[]>([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
@@ -27,22 +25,29 @@ export default function MediaPage() {
   const [deleting, setDeleting] = useState<string | null>(null)
   const [error, setError] = useState("")
 
-  async function loadMedia() {
-    try {
-      const res = await fetch("/api/media")
-      if (res.ok) {
-        const data = await res.json()
-        setMediaItems(data)
-      }
-    } catch {
-      setError("Failed to load media")
-    } finally {
-      setLoading(false)
-    }
-  }
-
   useEffect(() => {
-    loadMedia()
+    const controller = new AbortController()
+
+    async function load() {
+      try {
+        const res = await fetch("/api/media", { signal: controller.signal })
+        if (res.ok) {
+          const data = await res.json()
+          setMediaItems(data)
+        }
+      } catch {
+        if (!controller.signal.aborted) {
+          setError("Failed to load media")
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false)
+        }
+      }
+    }
+
+    load()
+    return () => controller.abort()
   }, [])
 
   async function handleCreate(e: React.FormEvent) {
@@ -68,7 +73,10 @@ export default function MediaPage() {
       setType("")
       setSize("")
       setShowForm(false)
-      await loadMedia()
+      const refreshed = await fetch("/api/media")
+      if (refreshed.ok) {
+        setMediaItems(await refreshed.json())
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong")
     } finally {

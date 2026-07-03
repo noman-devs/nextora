@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { format } from "date-fns"
-import { Search, Trash2, ChevronDown, ExternalLink, Mail, Phone, Building2, Wrench } from "lucide-react"
+import { Search, Trash2, ExternalLink, Mail, Phone, Building2, Wrench } from "lucide-react"
 
 interface Lead {
   id: string

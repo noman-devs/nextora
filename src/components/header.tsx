@@ -28,9 +28,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  useEffect(() => {
-    setMobileOpen(false)
-  }, [pathname])
+  const closeMobile = () => setMobileOpen(false)
 
   return (
     <header
@@ -112,6 +110,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={closeMobile}
                   className={cn(
                     "block px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                     pathname === link.href
@@ -123,7 +122,7 @@ export function Header() {
                 </Link>
               ))}
               <div className="pt-4">
-                <Link href="/contact">
+                <Link href="/contact" onClick={closeMobile}>
                   <Button variant="primary" size="lg" className="w-full">
                     Get Started
                     <ArrowRight className="h-4 w-4" />

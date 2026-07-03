@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Globe, Edit3, Trash2, Plus, X, Loader2, GripVertical } from "lucide-react"
+import { Globe, Edit3, Trash2, Plus, X, Loader2 } from "lucide-react"
 
 interface ServiceItem {
   id: string

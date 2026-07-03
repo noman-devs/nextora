@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import { format } from "date-fns"
 import { Mail, Trash2, Download, Loader2 } from "lucide-react"
 
@@ -12,28 +11,34 @@ interface Subscriber {
 }
 
 export default function NewsletterPage() {
-  const router = useRouter()
   const [subscribers, setSubscribers] = useState<Subscriber[]>([])
   const [loading, setLoading] = useState(true)
   const [deleting, setDeleting] = useState<string | null>(null)
   const [error, setError] = useState("")
 
-  async function loadSubscribers() {
-    try {
-      const res = await fetch("/api/subscribers")
-      if (res.ok) {
-        const data = await res.json()
-        setSubscribers(data)
-      }
-    } catch {
-      setError("Failed to load subscribers")
-    } finally {
-      setLoading(false)
-    }
-  }
-
   useEffect(() => {
-    loadSubscribers()
+    const controller = new AbortController()
+
+    async function load() {
+      try {
+        const res = await fetch("/api/subscribers", { signal: controller.signal })
+        if (res.ok) {
+          const data = await res.json()
+          setSubscribers(data)
+        }
+      } catch {
+        if (!controller.signal.aborted) {
+          setError("Failed to load subscribers")
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false)
+        }
+      }
+    }
+
+    load()
+    return () => controller.abort()
   }, [])
 
   async function handleDelete(id: string) {

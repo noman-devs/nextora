@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { format } from "date-fns"
-import { Briefcase, Edit3, Trash2, Search, ExternalLink } from "lucide-react"
+import { Briefcase, Edit3, Trash2, Search } from "lucide-react"
 
 interface PortfolioItem {
   id: string

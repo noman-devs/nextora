@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import { LeadDetailClient } from "./lead-detail-client"
-import { format } from "date-fns"
 
 export const dynamic = "force-dynamic"
 

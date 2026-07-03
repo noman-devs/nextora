@@ -27,7 +27,7 @@ export async function PATCH(
     })
 
     return NextResponse.json(service)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to update service" }, { status: 500 })
   }
 }
@@ -40,7 +40,7 @@ export async function DELETE(
     const { id } = await params
     await prisma.serviceItem.delete({ where: { id } })
     return NextResponse.json({ success: true })
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to delete service" }, { status: 500 })
   }
 }

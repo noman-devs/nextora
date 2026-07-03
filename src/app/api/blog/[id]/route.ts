@@ -47,13 +47,15 @@ export async function PATCH(
         ...(featuredImage !== undefined && { featuredImage }),
         ...(status !== undefined && {
           status,
-          publishedAt: status === "published" && !existing.publishedAt ? new Date() : existing.publishedAt,
+          publishedAt: status === "published"
+            ? (!existing.publishedAt ? new Date() : existing.publishedAt)
+            : null,
         }),
       },
     })
 
     return NextResponse.json(post)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to update post" }, { status: 500 })
   }
 }
@@ -66,7 +68,7 @@ export async function DELETE(
     const { id } = await params
     await prisma.blogPost.delete({ where: { id } })
     return NextResponse.json({ success: true })
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to delete post" }, { status: 500 })
   }
 }

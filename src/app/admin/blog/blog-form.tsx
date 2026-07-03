@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft, Loader2, Save, Send } from "lucide-react"
@@ -31,6 +31,7 @@ export function BlogForm({ post }: { post?: BlogPostData }) {
   const [metaDesc, setMetaDesc] = useState(post?.metaDesc || "")
   const [featuredImage, setFeaturedImage] = useState(post?.featuredImage || "")
   const [status, setStatus] = useState(post?.status || "draft")
+  const submitStatusRef = useRef(post?.status || "draft")
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState("")
 
@@ -67,7 +68,7 @@ export function BlogForm({ post }: { post?: BlogPostData }) {
           seoTitle: seoTitle || null,
           metaDesc: metaDesc || null,
           featuredImage: featuredImage || null,
-          status,
+          status: submitStatusRef.current,
         }),
       })
 
@@ -218,7 +219,7 @@ export function BlogForm({ post }: { post?: BlogPostData }) {
       <div className="flex items-center gap-3">
         <button
           type="submit"
-          onClick={() => setStatus("draft")}
+          onClick={() => { submitStatusRef.current = "draft"; setStatus("draft") }}
           disabled={saving}
           className="inline-flex items-center gap-2 h-11 px-6 rounded-xl bg-card border border-border text-light font-medium text-sm hover:bg-white/5 transition-colors disabled:opacity-50"
         >
@@ -227,7 +228,7 @@ export function BlogForm({ post }: { post?: BlogPostData }) {
         </button>
         <button
           type="submit"
-          onClick={() => setStatus("published")}
+          onClick={() => { submitStatusRef.current = "published"; setStatus("published") }}
           disabled={saving}
           className="inline-flex items-center gap-2 h-11 px-6 rounded-xl bg-primary text-background font-medium text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
         >

@@ -2,9 +2,9 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { ArrowRight, TrendingUp, Search, ShoppingCart, Users, Globe, MapPin } from "lucide-react"
+import { ArrowRight, ShoppingCart, Users, Globe, MapPin } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 
 const caseStudies = [
   {

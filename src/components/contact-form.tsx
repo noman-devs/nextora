@@ -44,9 +44,28 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setLoading(false)
-    setSubmitted(true)
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || undefined,
+          company: formData.company || undefined,
+          service: formData.service || undefined,
+          message: formData.message,
+        }),
+      })
+      if (!res.ok) {
+        throw new Error("Failed to submit")
+      }
+      setSubmitted(true)
+    } catch {
+      alert("Something went wrong. Please try again.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleChange = (

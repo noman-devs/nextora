@@ -7,7 +7,7 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     })
     return NextResponse.json(projects)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch projects" }, { status: 500 })
   }
 }
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json(project)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to create project" }, { status: 500 })
   }
 }

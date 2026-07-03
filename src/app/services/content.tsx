@@ -5,10 +5,9 @@ import { motion, useInView } from "framer-motion"
 import {
   Globe, ShoppingCart, Code2, Search, MapPin,
   BarChart3, Users, ShieldCheck, Server,
-  CheckCircle2, Sparkles,
+  CheckCircle2,
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
 
 const servicesDetail = [
   {

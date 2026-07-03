@@ -7,7 +7,7 @@ export async function GET() {
       orderBy: { order: "asc" },
     })
     return NextResponse.json(services)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch services" }, { status: 500 })
   }
 }
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json(service)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to create service" }, { status: 500 })
   }
 }

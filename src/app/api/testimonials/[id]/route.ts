@@ -28,7 +28,7 @@ export async function PATCH(
     })
 
     return NextResponse.json(testimonial)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to update testimonial" }, { status: 500 })
   }
 }
@@ -41,7 +41,7 @@ export async function DELETE(
     const { id } = await params
     await prisma.testimonial.delete({ where: { id } })
     return NextResponse.json({ success: true })
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to delete testimonial" }, { status: 500 })
   }
 }

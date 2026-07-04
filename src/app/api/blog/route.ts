@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { requireAdmin } from "@/lib/auth"
 
 export async function POST(request: Request) {
+  const authResult = await requireAdmin()
+  if ("error" in authResult) return authResult.error
+
   try {
     const body = await request.json()
     const { title, slug, content, excerpt, category, seoTitle, metaDesc, featuredImage, status } = body
@@ -31,7 +35,8 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json(post)
-  } catch {
+  } catch (error) {
+    console.error("Failed to create post:", error)
     return NextResponse.json({ error: "Failed to create post" }, { status: 500 })
   }
 }

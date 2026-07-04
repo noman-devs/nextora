@@ -1,13 +1,18 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { requireAdmin } from "@/lib/auth"
 
 export async function GET() {
+  const authResult = await requireAdmin()
+  if ("error" in authResult) return authResult.error
+
   try {
     const leads = await prisma.lead.findMany({
       orderBy: { createdAt: "desc" },
     })
     return NextResponse.json(leads)
-  } catch {
+  } catch (error) {
+    console.error("Failed to fetch leads:", error)
     return NextResponse.json({ error: "Failed to fetch leads" }, { status: 500 })
   }
 }
@@ -33,7 +38,8 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json(lead)
-  } catch {
+  } catch (error) {
+    console.error("Failed to create lead:", error)
     return NextResponse.json({ error: "Failed to create lead" }, { status: 500 })
   }
 }

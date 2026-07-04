@@ -8,8 +8,19 @@ import { Testimonials } from "@/components/testimonials"
 import { FAQ } from "@/components/faq"
 import { LeadGenCTA } from "@/components/lead-gen-cta"
 import { Footer } from "@/components/footer"
+import { prisma } from "@/lib/prisma"
 
-export default function Home() {
+export default async function Home() {
+  const [projects, testimonials] = await Promise.all([
+    prisma.portfolioProject.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 6,
+    }),
+    prisma.testimonial.findMany({
+      orderBy: { createdAt: "desc" },
+    }),
+  ])
+
   return (
     <>
       <Header />
@@ -18,8 +29,8 @@ export default function Home() {
         <Stats />
         <ServicesSection />
         <Process />
-        <Portfolio />
-        <Testimonials />
+        <Portfolio projects={projects} />
+        <Testimonials testimonials={testimonials} />
         <FAQ />
         <LeadGenCTA />
       </main>

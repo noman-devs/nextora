@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { format } from "date-fns"
-import { Image, Plus, Trash2, Loader2, ExternalLink, FileType } from "lucide-react"
+import Image from "next/image"
+import { ImageIcon, Plus, Trash2, Loader2, ExternalLink, FileType } from "lucide-react"
 
 interface MediaItem {
   id: string
@@ -197,7 +198,7 @@ export default function MediaPage() {
 
       {mediaItems.length === 0 ? (
         <div className="text-center py-20">
-          <Image className="h-10 w-10 text-muted mx-auto mb-3" />
+          <ImageIcon className="h-10 w-10 text-muted mx-auto mb-3" />
           <p className="text-muted text-sm">No media files yet</p>
           <button
             onClick={() => setShowForm(true)}
@@ -215,9 +216,12 @@ export default function MediaPage() {
             >
               <div className="aspect-video bg-background flex items-center justify-center overflow-hidden">
                 {item.url.match(/\.(jpg|jpeg|png|gif|webp|svg|bmp)$/i) ? (
-                  <img
+                  <Image
                     src={item.url}
                     alt={item.filename}
+                    width={300}
+                    height={170}
+                    unoptimized
                     className="h-full w-full object-cover"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = "none"

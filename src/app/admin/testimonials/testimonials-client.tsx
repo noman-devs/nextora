@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 import { format } from "date-fns"
 import { MessageSquare, Edit3, Trash2, Plus, Star, X, Loader2 } from "lucide-react"
 
@@ -270,9 +271,12 @@ export function TestimonialsClient({ testimonials: initial }: { testimonials: Te
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-3">
                       {item.image ? (
-                        <img
+                        <Image
                           src={item.image}
                           alt={item.name}
+                          width={40}
+                          height={40}
+                          unoptimized
                           className="h-10 w-10 rounded-full object-cover border border-border"
                           onError={(e) => {
                             (e.target as HTMLImageElement).style.display = "none"

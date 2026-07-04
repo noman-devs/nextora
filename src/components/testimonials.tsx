@@ -6,42 +6,84 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
-const testimonials = [
+interface Testimonial {
+  id: string
+  name: string
+  company: string | null
+  role: string | null
+  content: string
+}
+
+const fallbackTestimonials = [
   {
+    id: "1",
     quote:
       "Nextora transformed our online presence completely. Our traffic grew 340% in six months, and our conversion rate more than doubled. They're not just a service provider — they're a true growth partner.",
-    author: "Sarah Mitchell",
+    name: "Sarah Mitchell",
     role: "CEO",
     company: "Bloom Retail",
     initials: "SM",
   },
   {
+    id: "2",
     quote:
       "The team's technical expertise is unmatched. They rebuilt our WooCommerce store from the ground up, and we saw a 180% increase in revenue within the first quarter post-launch.",
-    author: "James Rodriguez",
+    name: "James Rodriguez",
     role: "Founder",
     company: "Artisan Goods Co.",
     initials: "JR",
   },
   {
+    id: "3",
     quote:
       "We've been working with Nextora for over three years. Their SEO strategy alone has been worth every penny — we now rank #1 for over 50 high-value keywords in our industry.",
-    author: "Emily Chen",
+    name: "Emily Chen",
     role: "Marketing Director",
     company: "TechVantage",
     initials: "EC",
   },
   {
+    id: "4",
     quote:
       "From strategy to execution, Nextora brought a level of professionalism and insight that we hadn't experienced with other agencies. Our lead generation pipeline has never been stronger.",
-    author: "Michael Thompson",
+    name: "Michael Thompson",
     role: "VP of Growth",
     company: "ScaleForce",
     initials: "MT",
   },
 ]
 
-export function Testimonials() {
+function getInitials(name: string): string {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2)
+}
+
+interface DisplayTestimonial {
+  id: string
+  quote: string
+  name: string
+  role: string | null
+  company: string | null
+  initials: string
+}
+
+export function Testimonials({ testimonials: dbTestimonials }: { testimonials?: Testimonial[] }) {
+  const mapped: DisplayTestimonial[] =
+    dbTestimonials && dbTestimonials.length > 0
+      ? dbTestimonials.map((t) => ({
+          id: t.id,
+          quote: t.content,
+          name: t.name,
+          role: t.role,
+          company: t.company,
+          initials: getInitials(t.name),
+        }))
+      : fallbackTestimonials
+
   const [current, setCurrent] = useState(0)
   const [direction, setDirection] = useState(0)
   const ref = useRef<HTMLDivElement>(null)
@@ -49,12 +91,12 @@ export function Testimonials() {
 
   const next = () => {
     setDirection(1)
-    setCurrent((prev) => (prev + 1) % testimonials.length)
+    setCurrent((prev) => (prev + 1) % mapped.length)
   }
 
   const prev = () => {
     setDirection(-1)
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setCurrent((prev) => (prev - 1 + mapped.length) % mapped.length)
   }
 
   const variants = {
@@ -102,18 +144,18 @@ export function Testimonials() {
                 <div className="text-center px-4 max-w-3xl mx-auto">
                   <Quote className="h-10 w-10 text-primary/10 mx-auto mb-8" />
                   <blockquote className="text-xl sm:text-2xl lg:text-3xl text-light leading-relaxed font-medium">
-                    &ldquo;{testimonials[current].quote}&rdquo;
+                    &ldquo;{mapped[current].quote}&rdquo;
                   </blockquote>
                   <div className="mt-10 flex items-center justify-center gap-4">
                     <div className="h-11 w-11 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-sm font-bold text-primary">
-                      {testimonials[current].initials}
+                      {mapped[current].initials}
                     </div>
                     <div className="text-left">
                       <div className="font-semibold text-light text-sm">
-                        {testimonials[current].author}
+                        {mapped[current].name}
                       </div>
                       <div className="text-xs text-muted">
-                        {testimonials[current].role}, {testimonials[current].company}
+                        {[mapped[current].role, mapped[current].company].filter(Boolean).join(", ")}
                       </div>
                     </div>
                   </div>
@@ -132,7 +174,7 @@ export function Testimonials() {
             </button>
 
             <div className="flex gap-2">
-              {testimonials.map((_, index) => (
+              {mapped.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => {

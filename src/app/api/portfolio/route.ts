@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { requireAdmin } from "@/lib/auth"
 
 export async function GET() {
   try {
@@ -7,12 +8,16 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     })
     return NextResponse.json(projects)
-  } catch {
+  } catch (error) {
+    console.error("Failed to fetch projects:", error)
     return NextResponse.json({ error: "Failed to fetch projects" }, { status: 500 })
   }
 }
 
 export async function POST(request: Request) {
+  const authResult = await requireAdmin()
+  if ("error" in authResult) return authResult.error
+
   try {
     const body = await request.json()
     const { title, slug, description, content, category, projectUrl, featuredImage, tags, results } = body
@@ -41,7 +46,8 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json(project)
-  } catch {
+  } catch (error) {
+    console.error("Failed to create project:", error)
     return NextResponse.json({ error: "Failed to create project" }, { status: 500 })
   }
 }

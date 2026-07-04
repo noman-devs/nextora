@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, Loader2, Save } from "lucide-react"
 
 interface PortfolioData {
@@ -188,9 +189,12 @@ export function PortfolioForm({ project }: { project?: PortfolioData }) {
             className="w-full h-11 px-4 rounded-xl bg-background border border-border text-light placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all text-sm"
           />
           {featuredImage && (
-            <img
+            <Image
               src={featuredImage}
               alt="Preview"
+              width={400}
+              height={160}
+              unoptimized
               className="mt-3 h-40 w-full object-cover rounded-xl border border-border"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none"

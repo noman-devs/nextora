@@ -8,28 +8,53 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
-const projects = [
+interface Project {
+  id: string
+  title: string
+  slug: string
+  description: string | null
+  category: string | null
+  tags: string
+}
+
+const fallbackProjects = [
   {
+    id: "1",
     title: "Luxe Retail Platform",
+    slug: "luxe-retail",
     category: "WooCommerce",
     description: "A high-end e-commerce experience with custom product configurators and seamless checkout.",
-    tags: ["WooCommerce", "Custom Theme", "Payment Integration"],
+    tags: JSON.stringify(["WooCommerce", "Custom Theme", "Payment Integration"]),
   },
   {
+    id: "2",
     title: "SaaS Landing Ecosystem",
+    slug: "saas-landing",
     category: "Custom Development",
     description: "A multi-page conversion-optimized platform with dynamic content and A/B testing infrastructure.",
-    tags: ["Next.js", "SEO", "CRO"],
+    tags: JSON.stringify(["Next.js", "SEO", "CRO"]),
   },
   {
+    id: "3",
     title: "National Brand Portal",
+    slug: "national-brand",
     category: "WordPress",
     description: "Enterprise WordPress solution with multi-site architecture and advanced content workflows.",
-    tags: ["WordPress", "Multi-site", "Enterprise"],
+    tags: JSON.stringify(["WordPress", "Multi-site", "Enterprise"]),
   },
 ]
 
-export function Portfolio() {
+function parseTags(tags: string): string[] {
+  try {
+    const parsed = JSON.parse(tags)
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
+export function Portfolio({ projects: dbProjects }: { projects?: Project[] }) {
+  const projects = (dbProjects && dbProjects.length > 0 ? dbProjects : fallbackProjects) as Project[]
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
@@ -59,7 +84,7 @@ export function Portfolio() {
         <div className="grid md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
-              key={project.title}
+              key={project.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -70,7 +95,7 @@ export function Portfolio() {
                 </div>
                 <CardContent className="p-8">
                   <Badge variant="ghost" className="mb-4">
-                    {project.category}
+                    {project.category || "Project"}
                   </Badge>
                   <h3 className="text-xl font-semibold text-light mb-3">
                     {project.title}
@@ -79,7 +104,7 @@ export function Portfolio() {
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
+                    {parseTags(project.tags).map((tag) => (
                       <span
                         key={tag}
                         className="text-xs px-3 py-1.5 rounded-full bg-black/[0.03] border border-border text-muted"

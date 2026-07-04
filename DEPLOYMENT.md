@@ -29,21 +29,24 @@
 
 ## Credentials
 
+> **SECURITY NOTE:** Never commit plaintext credentials to version control.
+> Store all secrets in `.env` (local) and Vercel Environment Variables (production).
+
 ### Admin Login (Admin Panel)
 | Field | Value |
 |---|---|
 | URL | https://meetnextora.com/admin/login |
-| Email | `admin@nextora.com` |
-| Password | `admin123` |
+| Email | Set via `ADMIN_EMAIL` env var |
+| Password | Set via `ADMIN_PASSWORD` env var |
 
 ### MongoDB Atlas
 | Field | Value |
 |---|---|
 | Cluster Name | `nextora-production` |
-| Database User | `nextora` |
-| Database Password | `Noman9250` |
+| Database User | Set via `DATABASE_URL` env var |
+| Database Password | Set via `DATABASE_URL` env var |
 | Database Name | `nextora` |
-| Connection String | `mongodb+srv://nextora:Noman9250@nextora-production.e90ktm0.mongodb.net/nextora?retryWrites=true&w=majority&appName=nextora-production` |
+| Connection String | Stored in `DATABASE_URL` env var |
 | Atlas Dashboard | https://cloud.mongodb.com (login with your MongoDB account) |
 
 ### Vercel
@@ -66,13 +69,13 @@
 
 Set these in Vercel Dashboard → Project → Settings → Environment Variables:
 
-| Key | Value | Environment |
+| Key | Description | Environment |
 |---|---|---|
-| `DATABASE_URL` | `mongodb+srv://nextora:Noman9250@nextora-production.e90ktm0.mongodb.net/nextora?retryWrites=true&w=majority&appName=nextora-production` | Production, Preview, Development |
-| `NEXTAUTH_SECRET` | `iz2qOeLaXMaiQu7UIalL9g0j894a01bT87DsygDu2Tc=` | Production, Preview, Development |
+| `DATABASE_URL` | MongoDB connection string (`mongodb+srv://...`) | Production, Preview, Development |
+| `NEXTAUTH_SECRET` | Random secret for JWT signing (generate with `openssl rand -base64 32`) | Production, Preview, Development |
 | `NEXTAUTH_URL` | `https://meetnextora.com` | Production |
-| `ADMIN_EMAIL` | `admin@nextora.com` | Production, Preview, Development |
-| `ADMIN_PASSWORD` | `admin123` | Production, Preview, Development |
+| `ADMIN_EMAIL` | Admin login email | Production, Preview, Development |
+| `ADMIN_PASSWORD` | Admin login password | Production, Preview, Development |
 
 ---
 

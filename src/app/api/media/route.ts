@@ -1,16 +1,24 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { requireAdmin } from "@/lib/auth"
 
 export async function GET() {
+  const authResult = await requireAdmin()
+  if ("error" in authResult) return authResult.error
+
   try {
     const media = await prisma.media.findMany({ orderBy: { createdAt: "desc" } })
     return NextResponse.json(media)
-  } catch {
+  } catch (error) {
+    console.error("Failed to fetch media:", error)
     return NextResponse.json({ error: "Failed to fetch media" }, { status: 500 })
   }
 }
 
 export async function POST(request: Request) {
+  const authResult = await requireAdmin()
+  if ("error" in authResult) return authResult.error
+
   try {
     const body = await request.json()
     const { filename, url, type, size } = body
@@ -29,7 +37,8 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json(media)
-  } catch {
+  } catch (error) {
+    console.error("Failed to create media:", error)
     return NextResponse.json({ error: "Failed to create media" }, { status: 500 })
   }
 }

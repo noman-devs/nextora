@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { requireAdmin } from "@/lib/auth"
 
 export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const authResult = await requireAdmin()
+  if ("error" in authResult) return authResult.error
+
   try {
     const { id } = await params
     const body = await request.json()
@@ -27,7 +31,8 @@ export async function PATCH(
     })
 
     return NextResponse.json(service)
-  } catch {
+  } catch (error) {
+    console.error("Failed to update service:", error)
     return NextResponse.json({ error: "Failed to update service" }, { status: 500 })
   }
 }
@@ -36,11 +41,15 @@ export async function DELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const authResult = await requireAdmin()
+  if ("error" in authResult) return authResult.error
+
   try {
     const { id } = await params
     await prisma.serviceItem.delete({ where: { id } })
     return NextResponse.json({ success: true })
-  } catch {
+  } catch (error) {
+    console.error("Failed to delete service:", error)
     return NextResponse.json({ error: "Failed to delete service" }, { status: 500 })
   }
 }

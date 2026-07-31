@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0C0C0E"/>
+      <stop offset="50%" stop-color="#17171C"/>
+      <stop offset="100%" stop-color="#8A2BE2"/>
+    </linearGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#ffffff" opacity="0.09"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <rect width="800" height="500" fill="url(#dots)"/>
+  <circle cx="690" cy="420" r="170" fill="#ffffff" opacity="0.05"/>
+  <g text-anchor="middle">
+    <text x="400" y="205" font-family="Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="6" fill="#C4A5EC">WORDPRESS</text>
+    <text x="400" y="275" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#ffffff">National Enterprise Portal</text>
+    <text x="400" y="315" font-family="Arial, sans-serif" font-size="18" fill="#DDD3EC">Multi-Site Enterprise Solution</text>
+  </g>
+  <g transform="translate(378,350)">
+    <rect x="0" y="0" width="44" height="44" rx="10" fill="#ffffff" opacity="0.14"/>
+    <text x="22" y="29" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">N</text>
+  </g>
+</svg>

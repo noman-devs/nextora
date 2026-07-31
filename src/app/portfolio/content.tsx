@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { ExternalLink } from "lucide-react"
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -10,6 +10,7 @@ const projects = [
   {
     title: "Luxe Retail Platform",
     category: "WooCommerce",
+    image: "/portfolio/luxe-retail.svg",
     description: "A premium e-commerce experience with custom product builders, multi-currency support, and a checkout flow that converts at 4.2%.",
     tags: ["WooCommerce", "Custom Theme", "Payment Integration", "Multi-currency"],
     results: ["180% revenue increase", "4.2% conversion rate", "60% faster load time"],
@@ -17,6 +18,7 @@ const projects = [
   {
     title: "SaaS Marketing Hub",
     category: "Custom Development",
+    image: "/portfolio/saas-marketing-hub.svg",
     description: "A conversion-optimized marketing platform with dynamic landing pages, A/B testing infrastructure, and real-time analytics.",
     tags: ["Next.js", "SEO", "CRO", "Analytics"],
     results: ["340% traffic growth", "220% lead increase", "45% lower bounce rate"],
@@ -24,6 +26,7 @@ const projects = [
   {
     title: "National Enterprise Portal",
     category: "WordPress",
+    image: "/portfolio/national-enterprise-portal.svg",
     description: "An enterprise-grade WordPress solution with multi-site architecture, custom workflows, and advanced content governance.",
     tags: ["WordPress", "Multi-site", "Enterprise", "Custom Plugins"],
     results: ["500+ pages managed", "98% uptime", "3s avg. load time"],
@@ -31,6 +34,7 @@ const projects = [
   {
     title: "Local Service Platform",
     category: "Local SEO",
+    image: "/portfolio/local-service-platform.svg",
     description: "A complete local SEO overhaul that took a regional service provider from page 5 to the #1 local map pack position.",
     tags: ["Local SEO", "GBP", "Citations", "Content"],
     results: ["#1 map pack ranking", "450% local traffic", "190% lead increase"],
@@ -38,6 +42,7 @@ const projects = [
   {
     title: "Health & Wellness Store",
     category: "WooCommerce",
+    image: "/portfolio/health-wellness-store.svg",
     description: "A high-volume WooCommerce store with subscription management, automated inventory, and integrated marketing automation.",
     tags: ["WooCommerce", "Subscriptions", "Automation", "Email"],
     results: ["250% revenue growth", "12k monthly orders", "35% repeat rate"],
@@ -45,6 +50,7 @@ const projects = [
   {
     title: "B2B Lead Engine",
     category: "Lead Generation",
+    image: "/portfolio/b2b-lead-engine.svg",
     description: "A complete lead generation system with optimized landing pages, CRM integration, and automated nurturing sequences.",
     tags: ["Lead Gen", "CRM", "Automation", "Landing Pages"],
     results: ["3,200 leads/month", "8% conversion rate", "40% lower CPA"],
@@ -88,8 +94,16 @@ export function PortfolioContent() {
                 transition={{ duration: 0.5, delay: index * 0.08 }}
               >
                 <Card hover className="group h-full overflow-hidden">
-                  <div className="aspect-[16/10] bg-primary/[0.03] flex items-center justify-center relative">
-                    <ExternalLink className="h-10 w-10 text-primary/20 group-hover:text-primary/40 group-hover:scale-110 transition-all duration-300" />
+                  <div className="aspect-[16/10] bg-primary/[0.03] relative overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <CardContent className="p-8">
                     <Badge variant="ghost" className="mb-4">{project.category}</Badge>

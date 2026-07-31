@@ -11,19 +11,19 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email Us",
-    value: "hello@nextora.com",
-    href: "mailto:hello@nextora.com",
+    value: "info@meetnextora.com",
+    href: "mailto:info@meetnextora.com",
   },
   {
     icon: Phone,
     label: "Call Us",
-    value: "+1 (555) 123-4567",
-    href: "+15551234567",
+    value: "01990842044",
+    href: "tel:+8801990842044",
   },
   {
     icon: MapPin,
     label: "Headquarters",
-    value: "San Francisco, CA",
+    value: "Chittagong",
   },
   {
     icon: Clock,
